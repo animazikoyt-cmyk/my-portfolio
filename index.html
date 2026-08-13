@@ -4,8 +4,183 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I'm So Sorry ❤️</title>
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Combined Stylesheet -->
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      --card-bg: #ffffff;
+      --primary-color: #e63946;
+      --text-dark: #2b2d42;
+      --text-muted: #6c757d;
+      --accent-pink: #ffe5ec;
+      --accent-border: #ffb3c1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      background-color: var(--accent-pink);
+      color: var(--primary-color);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .letter-window {
+      text-align: center;
+      border-bottom: 2px dashed #f0f0f0;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+
+    .heart-icon {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      animation: pulse 1.8s infinite;
+    }
+
+    .letter-window h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.4rem;
+      color: var(--primary-color);
+      margin-bottom: 16px;
+    }
+
+    .letter-body p {
+      line-height: 1.6;
+      margin-bottom: 12px;
+      color: #4a5568;
+    }
+
+    .letter-body .highlight {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-top: 16px;
+    }
+
+    .interactive-section h3 {
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .offer-btn {
+      background-color: #f8f9fa;
+      border: 1px solid var(--accent-border);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .offer-btn:hover {
+      background-color: var(--accent-pink);
+      transform: translateY(-2px);
+    }
+
+    .response-box {
+      margin-top: 20px;
+      padding: 16px;
+      background-color: var(--accent-pink);
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--accent-border);
+      transition: opacity 0.3s ease;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 480px) {
+      .buttons-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -49,6 +224,17 @@
     </footer>
   </div>
 
-  <script src="script.js"></script>
+  <!-- JavaScript Logic -->
+  <script>
+    function acceptOffer(offerText) {
+      const responseBox = document.getElementById('response-box');
+      const responseText = document.getElementById('response-text');
+
+      responseText.innerHTML = `<strong>Locked in!</strong><br> You selected: <em>${offerText}</em>. Consider it done! ❤️`;
+      
+      responseBox.classList.remove('hidden');
+      responseBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
 </body>
 </html>
