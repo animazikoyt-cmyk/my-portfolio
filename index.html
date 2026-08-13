@@ -3,153 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammed Firos PV | Travel Consultant</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>LUMIÈRE | Fine Fine Jewelry & Diamonds</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           1. CORE DESIGN VARIABLES & RESET
+           ========================================== */
+        :root {
+            --bg-dark: #07130e;
+            --bg-card: rgba(15, 34, 26, 0.7);
+            --border-gold: rgba(212, 175, 55, 0.25);
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Ambient Gold/Emerald Background Glow */
+        .glow-orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(160px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        .orb-1 { top: -150px; right: -100px; background: #064e3b; }
+        .orb-2 { bottom: -150px; left: -100px; background: var(--gold-primary); }
+
+        /* ==========================================
+           2. NAVIGATION BAR
+           ========================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(7, 19, 14, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--gold-primary);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--gold-primary); }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .nav-icons i:hover { color: var(--gold-primary); }
+
+        /* ==========================================
+           3. HERO SECTION
+           ========================================== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, rgba(15, 34, 26, 0.6) 0%, var(--bg-dark) 70%);
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            margin-bottom: 16px;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(3.2rem, 7vw, 6rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 50%, var(--gold-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 580px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 38px;
+            border: 1px solid var(--gold-primary);
+            color: var(--bg-dark);
+            background: var(--gold-primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--gold-light);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================
+           4. PRODUCT SHOWCASE GRID
+           ========================================== */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-img-wrap {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            background: #0d2218;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.08);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 4px 12px;
+            background: rgba(7, 19, 14, 0.8);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-primary);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border-radius: 30px;
+        }
+
+        .product-info {
+            padding: 24px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            color: var(--gold-primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-card {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid var(--border-gold);
+            color: var(--text-light);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-card:hover {
+            background: var(--gold-primary);
+            color: var(--bg-dark);
+            border-color: var(--gold-primary);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ==========================================
+           5. FOOTER
+           ========================================== */
+        footer {
+            border-top: 1px solid var(--border-gold);
+            padding: 60px 20px;
+            text-align: center;
+            background: #040b08;
+            color: var(--text-muted);
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover { color: var(--gold-primary); }
+
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-flex">
-            <div class="logo">FIROS<span>PV</span></div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Systems</a></li>
-                <li><a href="mailto:muhammedfiros.pv@gmail.com" class="btn-cta">Contact Me</a></li>
-            </ul>
+    <!-- Ambient Glowing Orbs -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <!-- Navigation Header -->
+    <nav>
+        <a href="#" class="logo">LUMIÈRE</a>
+        <ul class="nav-links">
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#high-jewelry">High Jewelry</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#contact">Boutiques</a></li>
+        </ul>
+        <div class="nav-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
         </div>
     </nav>
 
-    <header class="hero">
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="baground.mp4.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <!-- Hero Section -->
+    <section class="hero">
+        <span class="hero-subtitle">High Jewelry Collection</span>
+        <h1 class="hero-title">TIMELESS ELEGANCE</h1>
+        <p>Handcrafted diamond pieces and rare gemstones designed to last generations.</p>
+        <a href="#collections" class="btn">Explore Collection</a>
+    </section>
 
-    <div class="container">
-        <div class="hero-content">
-            <h1>MUHAMMED FIROS PV</h1>
-            <p class="subtitle">IATA Certified Travel Reservation & Ticketing Professional</p>
-            <div class="hero-contact">
-                <span><i class="fas fa-phone"></i> +971582119754</span>
-                <span><i class="fas fa-envelope"></i> muhammedfiros.pv@gmail.com</span>
-            </div>
+    <!-- Collection Showcase Grid -->
+    <section class="section" id="collections">
+        <div class="section-header">
+            <h2 class="section-title">Featured Creations</h2>
+            <p style="color: var(--text-muted);">Discover our most iconic designs</p>
         </div>
-    </div>
-</header>
 
-    <main class="container">
-        <section id="about" class="section card">
-            <h2>Professional Profile</h2>
-            <p>I am an IATA-certified professional with a deep focus on driving success through efficient travel operations. Specializing in high-volume reservation and ticketing environments, I bring technical expertise in global distribution systems and a commitment to delivering exceptional customer service.</p>
-        </section>
+        <div class="products-grid">
+            <!-- Product Card 1 -->
+            <article class="product-card">
+                <div class="product-img-wrap">
+                    <span class="product-badge">Bestseller</span>
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Diamond Pendant" class="product-img">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Celestial Solitaire Pendant</h3>
+                    <p class="product-price">$2,450</p>
+                    <button class="btn-card">Add To Cart</button>
+                </div>
+            </article>
 
-        <section id="skills" class="section">
-            <h2>Core Competencies</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fas fa-desktop"></i>
-                    <h3>GDS Systems</h3>
-                    <div class="tags">
-                        <span class="tag">Sabre</span>
-                        <span class="tag">Amadeus</span>
-                        <span class="tag">Galileo</span>
-                    </div>
+            <!-- Product Card 2 -->
+            <article class="product-card">
+                <div class="product-img-wrap">
+                    <span class="product-badge">New Arrival</span>
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Gold Diamond Ring" class="product-img">
                 </div>
-                <div class="skill-card">
-                    <i class="fas fa-plane-departure"></i>
-                    <h3>Operations</h3>
-                    <p>Domestic & International Ticketing, Front-end Counter, Forex Management.</p>
+                <div class="product-info">
+                    <h3 class="product-title">Aura Gold Diamond Ring</h3>
+                    <p class="product-price">$1,890</p>
+                    <button class="btn-card">Add To Cart</button>
                 </div>
-                <div class="skill-card">
-                    <i class="fas fa-language"></i>
-                    <h3>Communication</h3>
-                    <p>Fluent in English, Malayalam, and Hindi. Proficient in Tamil.</p>
-                </div>
-            </div>
-        </section>
-        <section id="expertise" class="section">
-    <div class="container">
-        <h2>Systems & Expertise</h2>
-        <div class="expertise-gallery">
-            <div class="gallery-item" data-aos="flip-left">
-                <div class="gallery-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1000&auto=format&fit=crop" alt="Global Systems">
-                </div>
-                <div class="gallery-text">
-                    <h3>GDS Mastery</h3>
-                    <p>Advanced proficiency in <strong>Sabre, Amadeus, and Galileo</strong> for complex multi-city bookings.</p>
-                </div>
-            </div>
+            </article>
 
-            <div class="gallery-item" data-aos="flip-left" data-aos-delay="200">
-                <div class="gallery-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop" alt="International Travel">
+            <!-- Product Card 3 -->
+            <article class="product-card">
+                <div class="product-img-wrap">
+                    <span class="product-badge">Signature</span>
+                    <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80" alt="Emerald Earrings" class="product-img">
                 </div>
-                <div class="gallery-text">
-                    <h3>International Ticketing</h3>
-                    <p>Expertise in global fare construction, re-issuances, and refund management.</p>
+                <div class="product-info">
+                    <h3 class="product-title">Royal Emerald Drop Earrings</h3>
+                    <p class="product-price">$3,200</p>
+                    <button class="btn-card">Add To Cart</button>
                 </div>
-            </div>
+            </article>
 
-            <div class="gallery-item" data-aos="flip-left" data-aos-delay="400">
-                <div class="gallery-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=1000&auto=format&fit=crop" alt="Forex Services">
+            <!-- Product Card 4 -->
+            <article class="product-card">
+                <div class="product-img-wrap">
+                    <span class="product-badge">Limited Edition</span>
+                    <img src="https://images.unsplash.com/photo-1611591475140-e3e4414f6b21?auto=format&fit=crop&w=800&q=80" alt="Gold Bracelet" class="product-img">
                 </div>
-                <div class="gallery-text">
-                    <h3>Forex Operations</h3>
-                    <p>Experienced Forex Executive handling high-volume currency exchange at Mumbai Airport.</p>
+                <div class="product-info">
+                    <h3 class="product-title">Elysian Gold Bangle</h3>
+                    <p class="product-price">$1,650</p>
+                    <button class="btn-card">Add To Cart</button>
                 </div>
-            </div>
+            </article>
         </div>
-    </div>
-</section>
+    </section>
 
-        <section id="experience" class="section">
-            <h2>Professional Journey</h2>
-            
-            
-            <div class="timeline-item card">
-                <div class="time-header">
-                    <h3>Travel Reservation & Ticketing</h3>
-                    <span class="badge">Current</span>
-                </div>
-                <p class="company">Build Travel LLC — Abu Dhabi, UAE</p>
-                <p class="date">Nov 2023 - Nov 2025</p>
-            </div>
-
-            <div class="timeline-item card">
-                <div class="time-header">
-                    <h3>Ticketing & Forex Executive</h3>
-                </div>
-                <p class="company">Akbar Travels of India — Mumbai Airport</p>
-                <p class="date">Dec 2022 - May 2023</p>
-            </div>
-
-            <div class="timeline-item card">
-                <div class="time-header">
-                    <h3>Counter Trainee (Res & Ticketing)</h3>
-                </div>
-                <p class="company">Akbar Travels Of India Pvt. Ltd</p>
-                <p class="date">May 2022 - Nov 2022</p>
-            </div>
-        </section>
-    </main>
-
+    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2025 Muhammed Firos PV | Passport Valid until 2031 | Indian National</p>
+        <div class="footer-logo">LUMIÈRE</div>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <p>&copy; 2026 LUMIÈRE Haute Joaillerie. All rights reserved.</p>
     </footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000, // Animation speed (1 second)
-    once: true,     // Animation happens only once while scrolling down
-  });
-</script>
 
 </body>
 </html>
