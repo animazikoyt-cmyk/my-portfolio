@@ -1,231 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>I'm So Sorry ❤️</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORI LUMEA | Anti-Tarnish Everyday Jewelry</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Combined Stylesheet -->
-  <style>
-    :root {
-      --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-      --card-bg: #ffffff;
-      --primary-color: #e63946;
-      --text-dark: #2b2d42;
-      --text-muted: #6c757d;
-      --accent-pink: #ffe5ec;
-      --accent-border: #ffb3c1;
-    }
+    <style>
+        :root {
+            --bg-main: #FAF8F5;          /* Luminous Ivory */
+            --bg-card: #FFFFFF;          /* Pure White Card */
+            --text-dark: #1F1E1D;         /* Deep Charcoal */
+            --text-gold: #B88E4C;         /* Warm Champagne Gold Accent */
+            --text-muted: #7A7672;        /* Neutral Gray */
+            --border-gold: rgba(184, 142, 76, 0.25);
+            --border-subtle: rgba(31, 30, 29, 0.08);
+            --font-editorial: 'Cormorant Garamond', serif;
+            --font-clean: 'Montserrat', sans-serif;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-dark);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            font-family: var(--font-clean);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 0%, #FFFFFF 0%, var(--bg-main) 80%);
+        }
 
-    .container {
-      max-width: 600px;
-      width: 100%;
-    }
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: #F3EFEA;
+            color: var(--text-gold);
+            border-bottom: 1px solid var(--border-gold);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.68rem;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 24px;
-    }
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 24px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+        }
 
-    .badge {
-      background-color: var(--accent-pink);
-      color: var(--primary-color);
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 12px;
-    }
+        .logo {
+            font-family: var(--font-editorial);
+            font-size: 2.2rem;
+            letter-spacing: 6px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
 
-    .hero h1 {
-      font-size: 2.2rem;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
 
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 400;
+            opacity: 0.75;
+            transition: all 0.4s ease;
+        }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
+        .nav-links a:hover { opacity: 1; color: var(--text-gold); }
 
-    .letter-window {
-      text-align: center;
-      border-bottom: 2px dashed #f0f0f0;
-      padding-bottom: 24px;
-      margin-bottom: 24px;
-    }
+        .nav-icons { display: flex; gap: 26px; color: var(--text-dark); font-size: 1rem; }
+        .nav-icons i { cursor: pointer; transition: all 0.3s ease; opacity: 0.85; }
+        .nav-icons i:hover { opacity: 1; transform: scale(1.15); color: var(--text-gold); }
 
-    .heart-icon {
-      font-size: 2.5rem;
-      margin-bottom: 8px;
-      animation: pulse 1.8s infinite;
-    }
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 60px 20px;
+        }
 
-    .letter-window h2 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.4rem;
-      color: var(--primary-color);
-      margin-bottom: 16px;
-    }
+        .hero-crest {
+            font-family: var(--font-editorial);
+            font-style: italic;
+            color: var(--text-gold);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 16px;
+        }
 
-    .letter-body p {
-      line-height: 1.6;
-      margin-bottom: 12px;
-      color: #4a5568;
-    }
+        .hero-title {
+            font-family: var(--font-editorial);
+            font-size: clamp(3.2rem, 7vw, 5.8rem);
+            line-height: 1.05;
+            margin-bottom: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
 
-    .letter-body .highlight {
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-top: 16px;
-    }
+        .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            max-width: 650px;
+            font-weight: 300;
+        }
 
-    .interactive-section h3 {
-      font-size: 1.1rem;
-      text-align: center;
-      margin-bottom: 4px;
-    }
+        .btn-gold {
+            display: inline-block;
+            padding: 18px 52px;
+            background: transparent;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 500;
+            border: 1px solid var(--text-gold);
+            transition: all 0.5s ease;
+        }
 
-    .hint {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
+        .btn-gold:hover {
+            background: var(--text-gold);
+            color: #FFFFFF;
+            box-shadow: 0 10px 25px rgba(184, 142, 76, 0.2);
+        }
 
-    .buttons-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+        /* Trust Strip */
+        .trust-strip {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            text-align: center;
+        }
 
-    .offer-btn {
-      background-color: #f8f9fa;
-      border: 1px solid var(--accent-border);
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
+        .trust-item i { font-size: 1.6rem; color: var(--text-gold); margin-bottom: 12px; }
+        .trust-item h4 { font-family: var(--font-editorial); font-size: 1.25rem; font-weight: 400; margin-bottom: 4px; }
+        .trust-item p { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; }
 
-    .offer-btn:hover {
-      background-color: var(--accent-pink);
-      transform: translateY(-2px);
-    }
+        /* Catalog Grid */
+        .section { max-width: 1400px; margin: 0 auto; padding: 80px 40px 100px 40px; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-title { font-family: var(--font-editorial); font-size: 3.2rem; font-weight: 300; letter-spacing: 3px; margin-bottom: 12px; }
+        .section-divider { width: 60px; height: 1px; background: var(--text-gold); margin: 0 auto 16px auto; opacity: 0.7; }
+        .section-subtitle { color: var(--text-muted); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; }
 
-    .response-box {
-      margin-top: 20px;
-      padding: 16px;
-      background-color: var(--accent-pink);
-      border-radius: 12px;
-      text-align: center;
-      border: 1px solid var(--accent-border);
-      transition: opacity 0.3s ease;
-    }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
 
-    .hidden {
-      display: none;
-    }
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            padding: 16px;
+            transition: all 0.5s ease;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
 
-    footer {
-      text-align: center;
-      margin-top: 24px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
+        .product-image-box {
+            position: relative;
+            height: 380px;
+            overflow: hidden;
+            background: #F4F1EA;
+            border: 1px solid var(--border-subtle);
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-      100% { transform: scale(1); }
-    }
+        .product-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
 
-    @media (max-width: 480px) {
-      .buttons-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+        .product-card:hover .product-image-box img { transform: scale(1.06); }
+
+        .badge-gold {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--border-gold);
+            padding: 6px 14px;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--text-gold);
+            z-index: 2;
+        }
+
+        .product-details { padding: 24px 12px 12px 12px; text-align: center; }
+        .product-name { font-family: var(--font-editorial); font-size: 1.5rem; margin-bottom: 4px; font-weight: 400; }
+        .product-spec { font-size: 0.65rem; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; }
+        .product-price { color: var(--text-gold); font-weight: 500; font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 20px; }
+
+        .btn-outline {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-dark);
+            font-size: 0.68rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-outline:hover { background: var(--text-dark); color: #FFFFFF; border-color: var(--text-dark); }
+        .product-card:hover { border-color: var(--text-gold); transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06); }
+
+        /* Footer */
+        footer { background-color: #F3EFEA; border-top: 1px solid var(--border-gold); padding: 80px 20px; text-align: center; }
+        .footer-logo { font-family: var(--font-editorial); font-size: 2.5rem; color: var(--text-dark); margin-bottom: 24px; letter-spacing: 6px; }
+        .footer-socials { display: flex; justify-content: center; gap: 28px; margin-bottom: 32px; }
+        .footer-socials a { color: var(--text-muted); font-size: 1.1rem; transition: all 0.3s ease; }
+        .footer-socials a:hover { color: var(--text-gold); transform: translateY(-2px); }
+
+        @media (max-width: 900px) {
+            nav { padding: 20px 30px; }
+            .nav-links { display: none; }
+            .hero-title { font-size: 2.8rem; }
+            .section { padding: 60px 20px; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <header class="hero">
-      <span class="badge">A message from the heart</span>
-      <h1>I'm Truly Sorry, My Love</h1>
-      <p class="subtitle">I made a mistake, and I want to make things right.</p>
-    </header>
+    <div class="announcement-bar">
+        Anti-Tarnish Stainless Steel • Free Shipping Across India
+    </div>
 
-    <main class="card">
-      <div class="letter-window">
-        <div class="heart-icon">❤️</div>
-        <h2>To My Wonderful Wife Pathumaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,</h2>
-        <div class="letter-body">
-          <p>I hate that I upset you. Seeing you hurt or frustrated—especially because of me—is the last thing I ever want.</p>
-          <p>You mean the absolute world to me, and I deeply regret my mistake. Thank you for your patience, your grace, and for being the best part of my life every single day.</p>
-          <p class="highlight">I love you more than words can say. Can we start fresh today?</p>
+    <nav>
+        <a href="#" class="logo">NORI LUMEA</a>
+        <ul class="nav-links">
+            <li><a href="#necklaces">Necklaces</a></li>
+            <li><a href="#earrings">Earrings</a></li>
+            <li><a href="#bracelets">Bracelets</a></li>
+            <li><a href="#rings">Rings</a></li>
+        </ul>
+        <div class="nav-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
         </div>
-      </div>
+    </nav>
 
-    
+    <section class="hero">
+        <span class="hero-crest">N°L</span>
+        <h1 class="hero-title">Everyday Luxury Essentials.</h1>
+        <p class="hero-subtitle">Premium Stainless Steel • Long-Lasting Gold Tone Finish • Sweatproof & Waterproof</p>
+        <a href="#catalog" class="btn-gold">Shop The Collection</a>
+    </section>
 
-        <div id="response-box" class="response-box hidden">
-          <p id="response-text"></p>
+    <section class="trust-strip">
+        <div class="trust-item">
+            <i class="fa-solid fa-droplet-slash"></i>
+            <h4>100% Waterproof</h4>
+            <p>Shower & Swim Safe</p>
         </div>
-      </div>
-    </main>
+        <div class="trust-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h4>Anti-Tarnish</h4>
+            <p>No Discoloration</p>
+        </div>
+        <div class="trust-item">
+            <i class="fa-solid fa-feather"></i>
+            <h4>Hypoallergenic</h4>
+            <p>Sensitive Skin Safe</p>
+        </div>
+        <div class="trust-item">
+            <i class="fa-solid fa-tag"></i>
+            <h4>Affordable Luxury</h4>
+            <p>Premium Quality Base</p>
+        </div>
+    </section>
+
+    <section class="section" id="catalog">
+        <div class="section-header">
+            <h2 class="section-title">The Ivory Collection</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Anti-Tarnish Stainless Steel Jewelry</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product 1: Butterfly Star Outline Necklace -->
+            <article class="product-card" id="necklaces">
+                <div class="product-image-box">
+                    <span class="badge-gold">Necklaces</span>
+                    <img src="images/butterfly-necklace.png" alt="Star Butterfly Outline Pendant Necklace">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">Star Outline Pendant</h3>
+                    <p class="product-spec">Stainless Steel Base</p>
+                    <p class="product-price">₹1,299</p>
+                    <button class="btn-outline">Add To Bag</button>
+                </div>
+            </article>
+
+            <!-- Product 2: Black Triangle Pendant Necklace -->
+            <article class="product-card">
+                <div class="product-image-box">
+                    <span class="badge-gold">Necklaces</span>
+                    <img src="images/triangle-necklace.png" alt="Black Triangle Pendant Necklace">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">Onyx Triangle Pendant</h3>
+                    <p class="product-spec">Stainless Steel Base</p>
+                    <p class="product-price">₹1,399</p>
+                    <button class="btn-outline">Add To Bag</button>
+                </div>
+            </article>
+
+            <!-- Product 3: Triple Band Gold Hoop Earrings -->
+            <article class="product-card" id="earrings">
+                <div class="product-image-box">
+                    <span class="badge-gold">Earrings</span>
+                    <img src="images/dome-ring.png" alt="Triple Band Gold Hoop Earrings">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">Triple Band Gold Hoops</h3>
+                    <p class="product-spec">Hypoallergenic & Lightweight</p>
+                    <p class="product-price">₹999</p>
+                    <button class="btn-outline">Add To Bag</button>
+                </div>
+            </article>
+
+            <!-- Product 4: Quad Band Gold Hoop Earrings -->
+            <article class="product-card">
+                <div class="product-image-box">
+                    <span class="badge-gold">Earrings</span>
+                    <img src="images/snake-bangle.png" alt="Quad Band Gold Hoop Earrings">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">Layered Gold Hoops</h3>
+                    <p class="product-spec">Anti-Tarnish Stainless Steel</p>
+                    <p class="product-price">₹1,199</p>
+                    <button class="btn-outline">Add To Bag</button>
+                </div>
+            </article>
+        </div>
+    </section>
 
     <footer>
-      <p>Forever Yours ❤️</p>
+        <div class="footer-logo">NORI LUMEA</div>
+        <div class="footer-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.75rem; letter-spacing: 2px;">&copy; 2026 NORI LUMEA. All rights reserved.</p>
     </footer>
-  </div>
 
-  <!-- JavaScript Logic -->
-  <script>
-    function acceptOffer(offerText) {
-      const responseBox = document.getElementById('response-box');
-      const responseText = document.getElementById('response-text');
-
-      responseText.innerHTML = `<strong>Locked in!</strong><br> You selected: <em>${offerText}</em>. Consider it done! ❤️`;
-      
-      responseBox.classList.remove('hidden');
-      responseBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  </script>
 </body>
 </html>
